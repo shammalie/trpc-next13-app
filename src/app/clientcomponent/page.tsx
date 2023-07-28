@@ -7,7 +7,5 @@ import MyRpcClientComponent from "@/app/MyRpcClientComponent";
 // a simple page to hold MyRpcClientComponent
 
 export default async function Home() {
-  return (
-      <MyRpcClientComponent/>
-  )
+  return <MyRpcClientComponent />;
 }
