@@ -11,7 +11,7 @@ export default function MyRpcClientComponent(): JSX.Element {
     console.log('name.data undefined');
     return <p>did not work</p>;
   }
-  console.log(`result.data is ${JSON.stringify(name.data)}`);
+  console.log(`result.data is ${JSON.stringify(name?.data)}`);
 
-  return <p>Hello, {name.data?.greeting}, greetings from client component land!</p>;
+  return <p>Hello, {name?.data?.greeting}, greetings from client component land!</p>;
 }
