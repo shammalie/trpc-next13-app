@@ -1,6 +1,6 @@
-import { prisma } from "../db";
-import { exampleRouter } from "./routers/example";
-import { createTRPCRouter } from "./trpc";
+import { prisma } from '../db';
+import { exampleRouter } from './routers/example';
+import { createTRPCRouter } from './trpc';
 
 /**
  * This is the primary router for your server.
@@ -11,6 +11,10 @@ export const appRouter = createTRPCRouter({
   example: exampleRouter,
 });
 
+/**
+ * This is the caller for react server components.
+ *
+ */
 export const caller = appRouter.createCaller({
   session: null,
   prisma: prisma,

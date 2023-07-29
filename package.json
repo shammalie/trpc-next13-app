@@ -10,15 +10,17 @@
   "scripts": {
     "dev": "concurrently -c green.bold,blue.bold,red.bold 'npm:dev:docker' 'npm:dev:next'",
     "dev:docker": "docker compose up",
+    "dev:docker:build": "docker compose up --force-recreate --build",
+    "dev:docker:clean": "docker compose down -v --remove-orphans",
     "dev:next": "next dev",
     "build": "next build",
-    "postinstall": "npm run generate",
+    "postinstall": "npm run prisma:generate",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "generate": "prisma generate",
-    "prepare": "husky install",
-    "prisma:push": "npx prisma db push"
+    "prisma:generate": "prisma generate",
+    "prisma:push": "npx prisma db push",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
