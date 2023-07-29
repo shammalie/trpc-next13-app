@@ -1,8 +1,7 @@
 import { appRouter } from "@/server/api/root";
-import {
-  FetchCreateContextFnOptions,
-  fetchRequestHandler,
-} from "@trpc/server/adapters/fetch";
+import { createTRPCContext } from "@/server/api/trpc";
+import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import { env } from "process";
 
 // this is the server RPC API handler
 
@@ -12,12 +11,15 @@ const handler = (request: Request) => {
     endpoint: "/api/trpc",
     req: request,
     router: appRouter,
-    createContext: function (
-      opts: FetchCreateContextFnOptions,
-    ): object | Promise<object> {
-      // empty context
-      return {};
-    },
+    createContext: createTRPCContext,
+    onError:
+      env.NODE_ENV === "development"
+        ? ({ path, error }) => {
+            console.error(
+              `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
+            );
+          }
+        : undefined,
   });
 };
 

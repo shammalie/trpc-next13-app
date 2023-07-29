@@ -1,4 +1,4 @@
-import { caller } from "@/server/api/root";
+import { caller } from '@/server/api/root';
 
 /** This is a React Server Component */
 export default async function rscPage() {
@@ -6,5 +6,5 @@ export default async function rscPage() {
   const result = await caller.example.getAll();
 
   // we render this output on the server
-  return <p>Hi, {result.name}, greetings from RSC land!</p>;
+  return <p>Hi, {result[0]?.id ?? 'test'}, greetings from RSC land!</p>;
 }

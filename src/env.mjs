@@ -21,8 +21,10 @@ export const env = createEnv({
       process.env.VERCEL ? z.string().min(1) : z.string().url(),
     ),
     // Add `.min(1) on ID and SECRET if you want to make sure they're not empty
-    DISCORD_CLIENT_ID: z.string(),
-    DISCORD_CLIENT_SECRET: z.string(),
+    AUTH_CLIENT_ID: z.string(),
+    AUTH_CLIENT_SECRET: z.string(),
+    CREDENTIALS_USERNAME: z.string(),
+    CREDENTIALS_PASSWORD: z.string(),
   },
 
   /**
@@ -43,8 +45,10 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-    DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
-    DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
+    AUTH_CLIENT_ID: process.env.AUTH_CLIENT_ID,
+    AUTH_CLIENT_SECRET: process.env.AUTH_CLIENT_SECRET,
+    CREDENTIALS_USERNAME: process.env.CREDENTIALS_USERNAME,
+    CREDENTIALS_PASSWORD: process.env.CREDENTIALS_PASSWORD,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
