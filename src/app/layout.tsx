@@ -1,5 +1,6 @@
+import '@/styles/globals.css';
 import { TrpcProvider } from '@/app/TrpcProvider';
-import { Providers } from './Theme/providers';
+import { Providers } from '@/app/Theme/providers';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
