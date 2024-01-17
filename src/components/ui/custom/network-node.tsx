@@ -15,10 +15,10 @@ type CustomNode = Node<NodeData>;
 
 export const CustomNode = React.memo(function CustomNode({ data }: NodeProps<NodeData>) {
   return (
-    <div className="px-4 py-2 ring-sm rounded-xl bg-card border-1 border-border">
+    <div className="px-4 py-2 ring-sm rounded-xl bg-background shadow-sm">
       <div className="flex">
-        <div className="rounded-full w-12 h-12 flex justify-center items-center bg-gray-100">
-          <Icon name={data.iconName} />
+        <div className="rounded-full w-12 h-12 flex justify-center items-center bg-card">
+          <Icon name={data.iconName} className="stroke-primary" />
         </div>
         <div className="ml-2">
           <div className="text-lg font-bold">{data.name}</div>
@@ -27,7 +27,7 @@ export const CustomNode = React.memo(function CustomNode({ data }: NodeProps<Nod
       </div>
 
       <Handle type="target" position={Position.Top} className="w-8 rounded-md !bg-primary" />
-      <Handle type="source" position={Position.Bottom} className="w-8 rounded-md !bg-primary" />
+      <Handle type="source" position={Position.Bottom} className="w-8 rounded-md !bg-accent" />
     </div>
   );
 });

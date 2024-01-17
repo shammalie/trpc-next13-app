@@ -1,17 +1,20 @@
+'use client';
+
+import { ProfileForm } from '@/components/ui/custom/forms/profile-form';
 import Flow from '@/components/ui/custom/network-diagrams';
-import { ModeToggle } from '@/components/ui/custom/theme-toggle';
 
 export default function homePage() {
   return (
-    <div className="flex flex-col w-[700px] m-auto pt-8 gap-5">
+    <div className="pt-8 gap-5">
       <div className="flex flex-row justify-between items-center">
-        <h1 className="text-lg">Home page</h1>
-        <div>
-          <ModeToggle />
+        <div className="flex mb-4 w-full gap-4">
+          <div className="w-1/3">
+            <ProfileForm />
+          </div>
+          <div className="w-2/3 h-[300px]">
+            <Flow />
+          </div>
         </div>
-      </div>
-      <div className="flex rounded-md border border-border shadow-sm m-15 w-100% h-[800px] p-1">
-        <Flow />
       </div>
     </div>
   );

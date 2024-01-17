@@ -59,7 +59,7 @@ const Flow = () => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
-      className="bg-muted"
+      className="bg-card rounded-lg"
     >
       <Controls />
     </ReactFlow>

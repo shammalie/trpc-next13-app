@@ -1,9 +1,15 @@
 import '@/styles/globals.css';
 import { TrpcProvider } from '@/app/TrpcProvider';
-import { Providers } from '@/app/Theme/providers';
-import { Inter } from 'next/font/google';
+import { Inter as FontSans } from 'next/font/google';
+import { ModeToggle } from '@/components/ui/custom/theme-toggle';
+import { ThemeProvider } from '@/app/Theme/themeProvider';
+import { cn } from '@/lib/utils';
+import { Toaster } from '@/components/ui/common/toaster';
 
-const inter = Inter({ subsets: ['latin'] });
+export const fontSans = FontSans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
 
 export const metadata = {
   title: 'Create Next App',
@@ -19,8 +25,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <TrpcProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={inter.className}>
-          <Providers>{children}</Providers>
+        <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <div className="2xl:max-w-screen-2xl xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm w-full m-auto flex flex-col justify-center">
+              <div className="flex justify-between py-12">
+                <h1 className="text-2xl font-medium font-sans">Website Name</h1>
+                <ModeToggle />
+              </div>
+              <div>{children}</div>
+            </div>
+            <Toaster />
+          </ThemeProvider>
         </body>
       </html>
     </TrpcProvider>
